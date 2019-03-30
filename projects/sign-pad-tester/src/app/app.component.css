@@ -1,0 +1,16 @@
+:host .sign-pad {
+  /* display: inline-block; */
+  position: relative;
+  height: 500px;
+  width: 80%;
+  box-sizing: border-box;
+  border: 1px dashed black;
+}
+:host .sign-pad canvas {
+  position: relative;
+  /* box-sizing: border-box; */
+  /* height: 100%;
+  width: 100%; */
+
+  border: 1px dashed red;
+}
