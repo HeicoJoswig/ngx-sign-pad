@@ -3,5 +3,8 @@
   "dest": "../../dist/sign-pad",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "signature_pad"
+  ]
 }
