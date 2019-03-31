@@ -3,33 +3,33 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sign-pad": {
-      "root": "projects/sign-pad",
-      "sourceRoot": "projects/sign-pad/src",
+    "sign-pad-lib": {
+      "root": "projects/sign-pad-lib",
+      "sourceRoot": "projects/sign-pad-lib/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/sign-pad/tsconfig.lib.json",
-            "project": "projects/sign-pad/ng-package.json"
+            "tsConfig": "projects/sign-pad-lib/tsconfig.lib.json",
+            "project": "projects/sign-pad-lib/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/sign-pad/src/test.ts",
-            "tsConfig": "projects/sign-pad/tsconfig.spec.json",
-            "karmaConfig": "projects/sign-pad/karma.conf.js"
+            "main": "projects/sign-pad-lib/src/test.ts",
+            "tsConfig": "projects/sign-pad-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/sign-pad-lib/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/sign-pad/tsconfig.lib.json",
-              "projects/sign-pad/tsconfig.spec.json"
+              "projects/sign-pad-lib/tsconfig.lib.json",
+              "projects/sign-pad-lib/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -167,5 +167,5 @@
       }
     }
   },
-  "defaultProject": "sign-pad"
+  "defaultProject": "sign-pad-lib"
 }

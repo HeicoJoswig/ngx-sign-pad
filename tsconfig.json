@@ -20,10 +20,10 @@
     ],
     "paths": {
       "sign-pad": [
-        "dist/sign-pad"
+        "dist/sign-pad-lib"
       ],
       "sign-pad/*": [
-        "dist/sign-pad/*"
+        "dist/sign-pad-lib/*"
       ]
     }
   }
