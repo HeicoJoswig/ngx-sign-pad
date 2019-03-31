@@ -54,4 +54,9 @@ export class SignPadComponent implements AfterContentInit {
     };
   }
 
+  clear(){
+    this.signaturePad.clear();
+    this.signatureChange.emit(this.signaturePad.toDataURL(this.type));
+  }
+
 }
