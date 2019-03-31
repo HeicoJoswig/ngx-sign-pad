@@ -1,10 +1,10 @@
 import { Component, ViewChild, ElementRef, AfterContentInit, EventEmitter, Output, Input, OnChanges } from '@angular/core';
-import SignaturePad, { IOptions } from 'signature_pad';
+import SignaturePad from 'signature_pad';
 import { EImageType } from './models/image-type.enum';
 import { SignaturePadOptions } from './models/signaturePadOptions';
 
 @Component({
-  selector: 'lib-sign-pad',
+  selector: 'ngx-sign-pad',
   template: `<canvas #canvasElement libCanvasResize [signaturePad]="signaturePad"></canvas>`,
   styles: [`
   :host {
