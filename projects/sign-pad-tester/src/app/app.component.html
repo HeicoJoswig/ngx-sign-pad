@@ -1,8 +1,3 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <lib-sign-pad [(signature)]="signature" (signatureChange)="onEnd($event)"></lib-sign-pad>
+  <lib-sign-pad [(signature)]="signature" (signatureChange)="onEnd($event)" [type]="imageTypes.SVG"></lib-sign-pad>
 </div>
-

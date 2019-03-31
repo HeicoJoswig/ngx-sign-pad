@@ -32,10 +32,9 @@ export class CanvasResizeDirective implements AfterViewInit {
   }
 
   private resizeCanvas() {
-    const ratio = Math.max(window.devicePixelRatio || 1, 1);
-
     const canvas = this.canvasElementRef.nativeElement;
     const container = this.renderer.parentNode(canvas);
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
 
     this.renderer.setAttribute(canvas, 'width', (container.offsetWidth * ratio).toString());
     this.renderer.setAttribute(canvas, 'height', (container.offsetHeight * ratio).toString());

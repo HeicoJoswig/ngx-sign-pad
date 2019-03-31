@@ -1,11 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterContentInit, EventEmitter, Output, Input, OnChanges } from '@angular/core';
 import SignaturePad, { IOptions } from 'signature_pad';
-
-export enum EImageType {
-  PNG = 'image/png',
-  SVG = 'image/svg+xml',
-  JPEG = 'image/jpeg'
-}
+import { EImageType } from './models/image-type.enum';
+import { SignaturePadOptions } from './models/signaturePadOptions';
 
 @Component({
   selector: 'lib-sign-pad',
@@ -23,19 +19,27 @@ export enum EImageType {
   }
   `]
 })
-export class SignPadComponent implements AfterContentInit, OnChanges {
+export class SignPadComponent implements AfterContentInit {
 
-  @Input() signature;
-  @Output() signatureChange = new EventEmitter<any>();
+  @Input() signature: string;
+  @Output() signatureChange = new EventEmitter<string>();
 
-  @Input() options: IOptions;
-  @Output() begin = new EventEmitter();
+  @Input() type: EImageType | string;
+  @Input() set options(value: SignaturePadOptions) {
+    Object.assign(this._options, value);
+  };
+
+  get options() : SignaturePadOptions {
+    return this._options;
+  }
+
   @ViewChild('canvasElement') canvasElementRef: ElementRef<HTMLCanvasElement>;
 
   public signaturePad: SignaturePad;
+  private _options: SignaturePadOptions;
 
   constructor() {
-    this.options = {
+    this._options = {
       dotSize: 1,
       minWidth: 1,
       maxWidth: 2,
@@ -45,15 +49,9 @@ export class SignPadComponent implements AfterContentInit, OnChanges {
 
   ngAfterContentInit() {
     this.signaturePad = new SignaturePad(this.canvasElementRef.nativeElement, this.options);
-    this.signaturePad.onBegin = (value) => { this.begin.emit(value); };
     this.signaturePad.onEnd = () => {
-      // this.canvasElementRef.nativeElement.getContext('2d').scale(1, 1);
-      this.signatureChange.emit(this.signaturePad.toDataURL(EImageType.SVG));
-      // this.canvasElementRef.nativeElement.getContext('2d').scale(1, 1);
+      this.signatureChange.emit(this.signaturePad.toDataURL(this.type));
     };
   }
 
-  ngOnChanges() {
-    // Todo pipe changed options to signaturePad
-  }
 }

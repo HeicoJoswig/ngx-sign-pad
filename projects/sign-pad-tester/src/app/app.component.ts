@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EImageType } from 'projects/sign-pad/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  imageTypes = EImageType;
   signature = null;
 
   constructor() {
