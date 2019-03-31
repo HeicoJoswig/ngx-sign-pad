@@ -3,8 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve sign-pad-tester --open",
     "build": "ng build",
+    "watch_lib": "ng build sign-pad-lib --watch",
+    "build_lib": "ng build sign-pad-lib",
+    "npm_pack": "cd dist/sign-pad-lib && npm pack",
+    "package": "npm run build_lib && npm run npm_pack",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -21,6 +25,7 @@
     "@angular/router": "~7.2.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
+    "ngx-sign-pad": "file:dist/sign-pad-lib/ngx-sign-pad-0.0.1.tgz",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
