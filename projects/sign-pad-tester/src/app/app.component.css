@@ -8,7 +8,7 @@
   height: 100%;
 }
 
-:host lib-sign-pad {
+:host ngx-sign-pad {
   height: 80%;
   width: 80%;
   border: 1px dashed black;

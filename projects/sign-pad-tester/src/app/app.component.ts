@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { EImageType } from 'projects/sign-pad/src/public-api';
-
+import { Component, ViewChild } from '@angular/core';
+import { EImageType, SignPadComponent } from 'ngx-sign-pad';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,8 +8,13 @@ import { EImageType } from 'projects/sign-pad/src/public-api';
 export class AppComponent {
   imageTypes = EImageType;
   signature = null;
-
+  @ViewChild(SignPadComponent) signaturePad: SignPadComponent;
+  
   constructor() {
+  }
+
+  clear() {
+    this.signaturePad.clear();
   }
 
   onEnd(data) {

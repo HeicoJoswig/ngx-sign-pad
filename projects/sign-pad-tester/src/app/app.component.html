@@ -1,3 +1,5 @@
 <div style="text-align:center">
-  <lib-sign-pad [(signature)]="signature" (signatureChange)="onEnd($event)" [type]="imageTypes.SVG"></lib-sign-pad>
+  <ngx-sign-pad [(signature)]="signature" (signatureChange)="onEnd($event)" [type]="imageTypes.SVG"></ngx-sign-pad>
+
+  <button (click)="clear()">Clear</button>
 </div>
