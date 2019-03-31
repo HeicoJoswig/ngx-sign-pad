@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterContentInit, EventEmitter, Output, Input, OnChanges } from '@angular/core';
 import SignaturePad, { IOptions } from 'signature_pad';
 
-enum EImageType {
+export enum EImageType {
   PNG = 'image/png',
   SVG = 'image/svg+xml',
   JPEG = 'image/jpeg'
@@ -18,6 +18,8 @@ enum EImageType {
   }
   :host canvas {
     position: relative;
+    height: 100%;
+    width: 100%;
   }
   `]
 })
@@ -45,7 +47,9 @@ export class SignPadComponent implements AfterContentInit, OnChanges {
     this.signaturePad = new SignaturePad(this.canvasElementRef.nativeElement, this.options);
     this.signaturePad.onBegin = (value) => { this.begin.emit(value); };
     this.signaturePad.onEnd = () => {
+      // this.canvasElementRef.nativeElement.getContext('2d').scale(1, 1);
       this.signatureChange.emit(this.signaturePad.toDataURL(EImageType.SVG));
+      // this.canvasElementRef.nativeElement.getContext('2d').scale(1, 1);
     };
   }
 

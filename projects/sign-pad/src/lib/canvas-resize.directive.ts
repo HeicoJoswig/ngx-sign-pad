@@ -3,8 +3,7 @@ import {
   AfterViewInit,
   Renderer2,
   ElementRef,
-  Input,
-  OnInit
+  Input
 } from '@angular/core';
 import SignaturePad from 'signature_pad';
 
@@ -23,22 +22,23 @@ export class CanvasResizeDirective implements AfterViewInit {
       const current = this.signaturePad.toDataURL();
       this.resizeCanvas();
       this.signaturePad.clear();
-      this.signaturePad.fromDataURL(current);
+
+      this.signaturePad.fromDataURL(current, {}, (error) => {
+        console.log("could not redraw", error);
+        this.signaturePad.clear();
+      });
     });
     this.resizeCanvas();
   }
 
   private resizeCanvas() {
-    console.log("canvas resize");
     const ratio = Math.max(window.devicePixelRatio || 1, 1);
-    const canvas = this.canvasElementRef.nativeElement;
 
-    const container = this.renderer.parentNode(canvas); // this.canvasElementRef.nativeElement.parentElement;
+    const canvas = this.canvasElementRef.nativeElement;
+    const container = this.renderer.parentNode(canvas);
 
     this.renderer.setAttribute(canvas, 'width', (container.offsetWidth * ratio).toString());
     this.renderer.setAttribute(canvas, 'height', (container.offsetHeight * ratio).toString());
-
     canvas.getContext('2d').scale(ratio, ratio);
   }
-
 }
