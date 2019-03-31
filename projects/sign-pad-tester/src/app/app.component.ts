@@ -6,8 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'sign-pad-tester';
+  signature = null;
 
   constructor() {
+  }
+
+  onEnd(data) {
+    console.log("data", data);
+
+    console.log("signature", this.signature);
   }
 }

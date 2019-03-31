@@ -1,5 +1,11 @@
-import { Component, ViewChild, ElementRef, AfterContentInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterContentInit, EventEmitter, Output, Input, OnChanges } from '@angular/core';
 import SignaturePad, { IOptions } from 'signature_pad';
+
+enum EImageType {
+  PNG = 'image/png',
+  SVG = 'image/svg+xml',
+  JPEG = 'image/jpeg'
+}
 
 @Component({
   selector: 'lib-sign-pad',
@@ -12,16 +18,17 @@ import SignaturePad, { IOptions } from 'signature_pad';
   }
   :host canvas {
     position: relative;
-    border: 1px dashed red;
   }
   `]
 })
-export class SignPadComponent implements AfterContentInit {
+export class SignPadComponent implements AfterContentInit, OnChanges {
+
+  @Input() signature;
+  @Output() signatureChange = new EventEmitter<any>();
+
   @Input() options: IOptions;
-  @Output() beginChange = new EventEmitter();
-  @Output() endChange = new EventEmitter();
+  @Output() begin = new EventEmitter();
   @ViewChild('canvasElement') canvasElementRef: ElementRef<HTMLCanvasElement>;
-  @ViewChild('container') containerElementRef: ElementRef<HTMLElement>;
 
   public signaturePad: SignaturePad;
 
@@ -36,5 +43,13 @@ export class SignPadComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     this.signaturePad = new SignaturePad(this.canvasElementRef.nativeElement, this.options);
+    this.signaturePad.onBegin = (value) => { this.begin.emit(value); };
+    this.signaturePad.onEnd = () => {
+      this.signatureChange.emit(this.signaturePad.toDataURL(EImageType.SVG));
+    };
+  }
+
+  ngOnChanges() {
+    // Todo pipe changed options to signaturePad
   }
 }
