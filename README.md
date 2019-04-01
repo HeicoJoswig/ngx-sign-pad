@@ -9,13 +9,13 @@ ngx-sign-pad is an Angular wrapper for [szimek/signature_pad](https://www.npmjs.
 ### 2. Import SignaturePadModule
 ```typescript
 
-import { SignaturePadModule } from 'angular2-signaturepad';
+import { SignPadModule } from 'ngx-sign-pad';
 
 ...
 
 @NgModule({
   declarations: [ ],
-  imports: [ SignaturePadModule ],
+  imports: [ SignPadModule ],
   providers: [ ],
   bootstrap: [ AppComponent ]
 })
