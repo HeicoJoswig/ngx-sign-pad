@@ -49,7 +49,7 @@ export class CanvasResizeDirective implements AfterViewInit {
     this.resizeCanvas();
   }
 
-  private resizeCanvas() {
+  resizeCanvas() {
     const canvas = this.canvasElementRef.nativeElement;
     const container = this.renderer.parentNode(canvas);
     const ratio = Math.max(window.devicePixelRatio || 1, 1);
