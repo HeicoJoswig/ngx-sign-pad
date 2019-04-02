@@ -1,24 +1,47 @@
-# SignPad
+# ngx-sign-pad
+ngx-sign-pad is an Angular wrapper for [szimek/signature_pad](https://www.npmjs.com/package/signature_pad).
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
+## Usage
 
-## Code scaffolding
+### 1. Install
+`npm install ngx-sign-pad --save`
 
-Run `ng generate component component-name --project sign-pad` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project sign-pad`.
-> Note: Don't forget to add `--project sign-pad` or else it will be added to the default project in your `angular.json` file. 
+### 2. Import SignaturePadModule
+```typescript
 
-## Build
+import { SignPadModule } from 'ngx-sign-pad';
 
-Run `ng build sign-pad` to build the project. The build artifacts will be stored in the `dist/` directory.
+...
 
-## Publishing
+@NgModule({
+  declarations: [ ],
+  imports: [ SignPadModule ],
+  providers: [ ],
+  bootstrap: [ AppComponent ]
+})
+```
 
-After building your library with `ng build sign-pad`, go to the dist folder `cd dist/sign-pad` and run `npm publish`.
+### 3. Use ngx-sign-pad
 
-## Running unit tests
+```typescript
+import { Component, ViewChild } from '@angular/core';
+import { EImageType, SignPadComponent } from 'ngx-sign-pad';
 
-Run `ng test sign-pad` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@Component({
+  template: '<ngx-sign-pad [(signature)]="signature" [type]="imageTypes.SVG"></ngx-sign-pad>'
+})
 
-## Further help
+export class AppComponent{
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  imageTypes = EImageType;
+  signature = null;
+  @ViewChild(SignPadComponent) signaturePad: SignPadComponent;
+  
+  constructor() {
+  }
+
+  clear() {
+    this.signaturePad.clear();
+  }
+}
+```
