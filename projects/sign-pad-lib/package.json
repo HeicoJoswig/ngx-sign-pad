@@ -1,6 +1,6 @@
 {
   "name": "ngx-sign-pad",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
 
   "description": "An Angular wrapper for [szimek/signature_pad](https://www.npmjs.com/package/signature_pad).",
   "keywords" :["Angular","Sign", "Signature", "Signaturepad", "Signpad", "SignaturePad"],
@@ -11,7 +11,7 @@
   },
 
   "dependencies": {
-    "signature_pad": "^3.0.0-beta.3"
+    "signature_pad": "^3.0.0-beta.4"
   },
   "peerDependencies": {
     "@angular/common": "^7.2.0",

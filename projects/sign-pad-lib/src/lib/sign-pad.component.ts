@@ -5,7 +5,7 @@ import { SignaturePadOptions } from './models/signaturePadOptions';
 
 @Component({
   selector: 'ngx-sign-pad',
-  template: `<canvas #canvasElement libCanvasResize [signaturePad]="signaturePad"></canvas>`,
+  template: `<canvas #canvasElement libCanvasResize [debounceTime]="options?.debounceTime" [signaturePad]="signaturePad"></canvas>`,
   styles: [`
   :host {
     position: relative;
@@ -43,7 +43,8 @@ export class SignPadComponent implements AfterContentInit {
       dotSize: 1,
       minWidth: 1,
       maxWidth: 2,
-      penColor: 'rgb(0, 0, 0)'
+      penColor: 'rgb(0, 0, 0)',
+      debounceTime: 10
     };
   }
 

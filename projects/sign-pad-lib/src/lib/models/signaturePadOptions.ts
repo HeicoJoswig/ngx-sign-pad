@@ -7,4 +7,5 @@ export interface SignaturePadOptions {
     penColor?: string;
     throttle?: number;
     velocityFilterWeight?: number;
+    debounceTime?: number;
 }
