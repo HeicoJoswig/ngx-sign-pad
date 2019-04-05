@@ -25,7 +25,7 @@
     "@angular/router": "~7.2.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
-    "ngx-sign-pad": "file:dist/sign-pad-lib/ngx-sign-pad-0.0.1.tgz",
+    "ngx-sign-pad": "file:dist/sign-pad-lib/ngx-sign-pad-0.0.1-alpha.4.tgz",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },

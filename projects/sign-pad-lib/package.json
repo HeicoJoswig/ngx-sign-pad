@@ -11,7 +11,7 @@
   },
 
   "dependencies": {
-    "signature_pad": "^3.0.0-beta.4"
+    "signature_pad": "^3.0.0-beta.3"
   },
   "peerDependencies": {
     "@angular/common": "^7.2.0",
